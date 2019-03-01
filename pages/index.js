@@ -38,7 +38,7 @@ class index extends React.Component {
     query: ''
   };
 
-  handleKeyPress = event => {
+  handleOnChange = event => {
     const potentialBikeId = event.target.value;
 
     this.setState({
@@ -48,6 +48,13 @@ class index extends React.Component {
     });
   };
 
+  handleKeyPress = event => {
+    // Prevent non-numeric input
+    if (isNaN(String.fromCharCode(event.which || event.keyCode))) {
+      event.preventDefault();
+    }
+  };
+
   render() {
     const bikeCount = Object.keys(this.props.bikes).length.format();
 
@@ -55,7 +62,12 @@ class index extends React.Component {
       <div>
         <h1>Searching {bikeCount} parked Nextbikes</h1>
         <form>
-          <input placeholder="Bike id" onChange={this.handleKeyPress} />
+          <input
+            placeholder="Bike number"
+            onChange={this.handleOnChange}
+            onKeyPress={this.handleKeyPress}
+            maxLength="5"
+          />
         </form>
 
         <Bike id={this.state.query} {...this.props.bikes[this.state.query]} />
