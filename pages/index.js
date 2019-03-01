@@ -5,7 +5,7 @@ import Bike from '../components/bike';
 
 class index extends React.Component {
   static async getInitialProps({ req }) {
-    const res = await fetch(`https://api.nextbike.net/maps/nextbike-live.json`); //TODO: implement some caching here
+    const res = await fetch(`https://brave-silk.glitch.me/nextbike-live.json`); //proxy server
     const json = await res.json();
 
     // Put all bikes into an object
