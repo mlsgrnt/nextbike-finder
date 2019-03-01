@@ -10,6 +10,8 @@ class index extends React.Component {
 
     // Put all bikes into an object
     // bike number -> station name -> city name
+    //
+    // TODO: use map or similar to be more javascript-ey?
     const bikes = json.countries.reduce((bikes, country) => {
       // reduce each country down into cities
       country.cities.forEach(city => {
