@@ -53,7 +53,7 @@ class index extends React.Component {
 
     return (
       <div>
-        <h1>Searching Nextbike's {bikeCount} bikes</h1>
+        <h1>Searching {bikeCount} parked Nextbikes</h1>
         <form>
           <input placeholder="Bike id" onChange={this.handleKeyPress} />
         </form>
