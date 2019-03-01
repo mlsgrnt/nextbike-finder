@@ -34,6 +34,18 @@ class index extends React.Component {
     return { bikes };
   }
 
+  bikesLivingWithBike = bike => {
+    if (!bike) return;
+
+    return Object.keys(this.props.bikes).reduce((neighbors, b) => {
+      if (bike.place == this.props.bikes[b].place) {
+        neighbors.push(b);
+      }
+
+      return neighbors;
+    }, []);
+  };
+
   state = {
     query: ''
   };
@@ -70,7 +82,13 @@ class index extends React.Component {
           />
         </form>
 
-        <Bike id={this.state.query} {...this.props.bikes[this.state.query]} />
+        <Bike
+          id={this.state.query}
+          neighbors={this.bikesLivingWithBike(
+            this.props.bikes[this.state.query]
+          )}
+          {...this.props.bikes[this.state.query]}
+        />
       </div>
     );
   }
